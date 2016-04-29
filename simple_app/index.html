@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<body ng-init="customers=[{joined: '2000-28-02', name : 'john', city: 'chandler', orderTotal: '2'},
+               {joined: '2000-12-02', name : 'Sai', city: 'dallas', orderTotal: '20'},
+               {joined: '2016-15-08', name : 'Anil', city: 'austin', orderTotal: '22'},
+               {joined: '2020-16-22', name : 'Venu', city: 'warrens', orderTotal: '285'}]">
+
+    <h2>Customers</h2>
+    <div>
+
+        <p>Filter :
+            <input type="text" ng-model="customerFilter.name" placeholder="Enter name here">
+        </p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Order Total</th>
+                <th>Joined</th>
+            </tr>
+            <tr ng-repeat="cust in customers | filter:customerFilter | orderBy : 'name'">
+                <td>{{cust.name | uppercase}}</td>
+                <td>{{cust.city}}</td>
+                <td>{{cust.orderTotal | currency}}</td>
+                <td>{{cust.joined | date:'mm-dd-yyyy'}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+</body>
+
+</html>
