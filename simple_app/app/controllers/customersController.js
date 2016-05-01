@@ -1,13 +1,19 @@
 //Option 3
 //wrapper function will make names not in global scope, good in long run working on big applications
 (function () {
-    var CustomersController = function ($scope, customersService, appSettings) {
+    var CustomersController = function ($scope, customersFactory, appSettings) {
         $scope.sortBy = 'name';
         $scope.reverse = false;
         $scope.appSettings = appSettings;
 
         function init() {
-            $scope.customers = customersService.getCustomers();
+            customersFactory.getCustomers()
+                .success(function (customers) {
+                    $scope.customers = customers;
+                })
+                .error(function (data, status, headers, config) {
+                    //handle errors
+                });
         }
 
         init();
@@ -18,7 +24,7 @@
         };
     };
 
-    CustomersController.$inject = ['$scope', 'customersService', 'appSettings'];
+    CustomersController.$inject = ['$scope', 'customersFactory', 'appSettings'];
     angular.module('customersApp').controller('CustomersController', CustomersController);
 }());
 
