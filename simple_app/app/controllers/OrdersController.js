@@ -1,5 +1,5 @@
 (function () {
-    var OrdersController = function ($scope, $routeParams, customersFactory) {
+    var OrdersController = function ($scope, $log, $routeParams, customersFactory) {
         var customerId = $routeParams.customerId;
         $scope.customer = null;
 
@@ -17,6 +17,6 @@
 
     };
 
-    OrdersController.$inject = ['$scope', '$routeParams', 'customersFactory'];
+    OrdersController.$inject = ['$scope', '$log', '$routeParams', 'customersFactory'];
     angular.module('customersApp').controller('OrdersController', OrdersController);
 }());
