@@ -1,0 +1,17 @@
+<h2>Orders</h2>
+<div ng-controller="OrdersController">
+
+
+    <table ng-repeat="order in orders">
+        <tr>
+            <td>
+                {{order.product}}
+            </td>
+            <td>
+                {{order.total | currency}}
+            </td>
+        </tr>
+    </table>
+
+
+</div>
