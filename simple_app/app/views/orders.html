@@ -1,8 +1,8 @@
-<h2>Orders</h2>
+<h2>{{customer.name}}'s Orders</h2>
 <div ng-controller="OrdersController">
 
 
-    <table ng-repeat="order in orders">
+    <table ng-repeat="order in customer.orders">
         <tr>
             <td>
                 {{order.product}}
